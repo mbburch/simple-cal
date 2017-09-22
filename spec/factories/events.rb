@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :event do
     user
-    title { FFaker::HipsterIpsum.word }
-    description { FFaker::HipsterIpsum.sentence }
+    title { Faker::Hipster.word }
+    description { Faker::Hipster.sentence }
     start_time { Time.now }
     end_time { rand(60).minutes.from_now }
   end
