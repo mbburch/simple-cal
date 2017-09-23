@@ -7,11 +7,13 @@ class Event < ApplicationRecord
   has_many :comments, inverse_of: :event, dependent: :destroy
   accepts_nested_attributes_for :comments, allow_destroy: true, reject_if: :all_blank
 
+  has_many :tasks, inverse_of: :event, dependent: :destroy
+  accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
+
   validates :title, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
-  validates_attachment :event_file,
-  content_type: { content_type: [
+  validates_attachment :event_file, content_type: { content_type: [
     "application/pdf",
     "application/doc",
     "application/docx",

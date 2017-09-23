@@ -64,7 +64,8 @@ class EventsController < ApplicationController
       :active,
       :private,
       :category_id,
-      comments_attributes: [:id, :comment, :_destroy]
+      comments_attributes: [:id, :comment, :_destroy],
+      tasks_attributes: [:id, :description, :priority, :_destroy]
     )
   end
 end
