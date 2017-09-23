@@ -27,6 +27,17 @@
       <%= f.association :category %>
     </div>
     <div class="row">
+      <h6>Comments</h6>
+      <div id="comments">
+        <%= f.simple_fields_for :comments do |comment| %>
+          <%= render "comment_fields", f: comment %>
+        <% end %>
+      </div>
+      <div class="links">
+        <%= link_to_add_association "add comment", f, :comments %>
+      </div>
+    </div>
+    <div class="row">
       <%= f.input :active, wrapper: :materialize_boolean, wrapper_html: { class: 'm3 s6' } %>
       <%= f.input :private, wrapper: :materialize_boolean, wrapper_html: { class: 'm3 s6' } %>
     </div>

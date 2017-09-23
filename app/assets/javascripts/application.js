@@ -16,5 +16,6 @@
 //= require jquery.minicolors.simple_form
 //= require materialize-sprockets
 //= require materialize-form
+//= require cocoon
 //= require_tree .
 

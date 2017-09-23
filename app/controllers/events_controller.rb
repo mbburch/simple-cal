@@ -63,7 +63,8 @@ class EventsController < ApplicationController
       :event_file,
       :active,
       :private,
-      :category_id
+      :category_id,
+      comments_attributes: [:id, :comment, :_destroy]
     )
   end
 end

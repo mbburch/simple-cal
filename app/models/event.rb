@@ -4,6 +4,9 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
 
+  has_many :comments, inverse_of: :event, dependent: :destroy
+  accepts_nested_attributes_for :comments, allow_destroy: true, reject_if: :all_blank
+
   validates :title, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
