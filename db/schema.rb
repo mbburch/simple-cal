@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921143643) do
+ActiveRecord::Schema.define(version: 20170923015344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20170921143643) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "event_file_file_name"
+    t.string "event_file_content_type"
+    t.integer "event_file_file_size"
+    t.datetime "event_file_updated_at"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

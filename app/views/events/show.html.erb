@@ -1,0 +1,19 @@
+<%= link_to "Edit", edit_event_path(@event) %>
+<%= link_to "Delete", event_path(@event), data: { confirm: 'Are you sure?' }, method: :delete  %>
+
+<h1><%= @event.title.titleize %></h1>
+
+<h4><%= "#{@event.start_time.to_s(:day_month_time)} - #{@event.end_time.to_s(:day_month_time)}" %></h4>
+<% if @event.description %>
+  <p><%= @event.description.capitalize %></p>
+<% end %>
+
+<% if @event.event_file? %>
+  <div>
+    <iframe src="<%= @event.event_file.url %>"></iframe>
+    <%= link_to @event.event_file.original_filename, @event.event_file.url if @event.event_file? %>
+  </div>
+<% end %>
+
+
+

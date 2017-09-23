@@ -12,16 +12,20 @@ end
 #
 # Table name: events
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  description :text
-#  start_time  :datetime
-#  end_time    :datetime
-#  active      :boolean          default(TRUE)
-#  private     :boolean          default(TRUE)
-#  user_id     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                      :integer          not null, primary key
+#  title                   :string
+#  description             :text
+#  start_time              :datetime
+#  end_time                :datetime
+#  active                  :boolean          default(TRUE)
+#  private                 :boolean          default(TRUE)
+#  user_id                 :integer
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  event_file_file_name    :string
+#  event_file_content_type :string
+#  event_file_file_size    :integer
+#  event_file_updated_at   :datetime
 #
 # Indexes
 #

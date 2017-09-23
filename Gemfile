@@ -21,6 +21,7 @@ gem 'materialize-sass'
 gem 'materialize-form'
 gem 'simple_calendar', '~> 2.0'
 gem 'devise'
+gem "paperclip", "~> 5.0.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
