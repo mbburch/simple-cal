@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'events#index'
   resources :events
+  resources :categories
 end

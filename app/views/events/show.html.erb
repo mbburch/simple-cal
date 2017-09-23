@@ -8,12 +8,7 @@
   <p><%= @event.description.capitalize %></p>
 <% end %>
 
-<% if @event.event_file? %>
-  <div>
-    <iframe src="<%= @event.event_file.url %>"></iframe>
-    <%= link_to @event.event_file.original_filename, @event.event_file.url if @event.event_file? %>
-  </div>
-<% end %>
+<%= link_to @event.event_file.original_filename, @event.event_file.url if @event.event_file? %>
 
 
 

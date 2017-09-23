@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def index
     @user = current_user
+    @categories = current_user.categories
     @events = current_user.events
   end
 
@@ -61,7 +62,8 @@ class EventsController < ApplicationController
       :end_time,
       :event_file,
       :active,
-      :private
+      :private,
+      :category_id
     )
   end
 end

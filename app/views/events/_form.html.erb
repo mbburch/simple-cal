@@ -1,5 +1,7 @@
 <div class="row">
   <%= simple_form_for @event do |f| %>
+    <%= f.error_notification message: t(:'simple_form.error_notification.default_message', model: "Event") %>
+
     <div class="row">
       <%= f.input :title, wrapper_html: { class: 'm6 s12' } %>
     </div>
@@ -22,9 +24,16 @@
       <%= f.input :event_file, as: :file %>
     </div>
     <div class="row">
+      <%= f.association :category %>
+    </div>
+    <div class="row">
       <%= f.input :active, wrapper: :materialize_boolean, wrapper_html: { class: 'm3 s6' } %>
       <%= f.input :private, wrapper: :materialize_boolean, wrapper_html: { class: 'm3 s6' } %>
     </div>
-    <%= f.button :submit %>
+    <div class="row">
+      <%= f.button :submit %>
+      <%= link_to "Cancel", dashboard_path, {class: "btn waves-effect waves-light grey darken-1"} %>
+    </div>
+
   <% end %>
 </div>

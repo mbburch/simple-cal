@@ -1,10 +1,27 @@
-<%= link_to "New Event", new_event_path %>
-
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
-  <% events.each do |event| %>
-    <div>
-      <%= link_to event.title, event_path(event) %>
+<div class="row">
+  <div class="hide-on-small-only col m2">
+    <h6>Categories</h6>
+    <ul class="collection">
+      <% @categories.each do |category| %>
+      <li class="collection-item blue-grey darken-2"><div><%= link_to category.name, category_path(category), style:"color:white" %><a href="#!" class="secondary-content"><i class="material-icons" style="color:<%="#{category.color}"%>">label</i></div></li>
+        <!-- <li class="collection-item" style="background-color:<%="#{category.color}"%>"><%= link_to category.name, category_path(category) %></li> -->
+      <% end %>
+    </ul>
+    <div class="row">
+      <%= link_to "New Category", new_category_path %>
     </div>
-  <% end %>
-<% end %>
+    <div class="row">
+      <%= link_to "New Event", new_event_path %>
+    </div>
+  </div>
+  <div class="col s12 m9">
+    <%= month_calendar events: @events do |date, events| %>
+      <%= date.day %>
+      <% events.each do |event| %>
+        <div>
+          <%= link_to event.title, event_path(event), style:"color:#{listing_color(event)}" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

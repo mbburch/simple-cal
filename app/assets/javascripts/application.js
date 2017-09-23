@@ -12,7 +12,8 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require turbolinks
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
 //= require materialize-sprockets
 //= require materialize-form
 //= require_tree .

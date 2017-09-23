@@ -1,0 +1,14 @@
+<h1>New Category</h1>
+<div class="row">
+  <%= simple_form_for @category do |f| %>
+    <div class="row">
+      <%= f.input :name, wrapper_html: { class: 'm6 s12' } %>
+    </div>
+    <div class="row">
+      <%= f.input :color, as: :minicolors, input_html: {data: {
+          minicolors: {theme: :bootstrap, position: :right}}}, wrapper_html: { class: 'm6 s12' } %>
+    </div>
+    <%= f.button :submit %>
+    <%= link_to "Cancel", dashboard_path, {class: "btn waves-effect waves-light grey darken-1"} %>
+  <% end %>
+</div>
