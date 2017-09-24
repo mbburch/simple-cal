@@ -53,7 +53,6 @@ class EventsController < ApplicationController
 
   def activate_events
     current_user.events.where(active: false).where("active_date <= ?", Date.today ).update_all(active: true)
-    binding.pry
   end
 
   def set_event

@@ -1,5 +1,5 @@
 <div class="card">
-  <h4 class="card-header"><%= @event.title.titleize %><small class="text-muted float-right"><%= "#{@event.start_time.to_s(:day_month_time)} - #{@event.end_time.to_s(:day_month_time)}" %></small></h4>
+  <h4 class="card-header"><%= @event.title.titleize %><span class="badge badge-pill ml-2" style="<%= "background-color:#{@event.category.color}; color:white" %>"><%= @event.category.name %></span><small class="text-muted float-right"><%= "#{@event.start_time.to_s(:day_month_time)} - #{@event.end_time.to_s(:day_month_time)}" %></small></h4>
   <div class="card-body">
 
     <% if @event.description %>

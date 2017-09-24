@@ -3,7 +3,7 @@ FactoryGirl.define do
     user
     title { Faker::Hipster.word }
     description { Faker::Hipster.sentence }
-    start_time { Time.now }
+    start_time { Time.zone.now }
     end_time { rand(60).minutes.from_now }
   end
 end
