@@ -1,14 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
-
-  def show
-    @category
-  end
-
-  def index
-    @categories = current_user.categories
-  end
+  before_action :set_category, only: [:edit, :update]
 
   def new
     @category = current_user.categories.new
@@ -39,12 +31,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destroy
-    @category.destroy
-    redirect_to dashboard_path
-    flash[:notice] = "Category was successfully destroyed."
-  end
-
   private
 
   def set_category
@@ -52,10 +38,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(
-      :id,
-      :name,
-      :color
-    )
+    params.require(:category).permit(:id, :name, :color)
   end
 end

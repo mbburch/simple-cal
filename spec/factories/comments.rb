@@ -9,7 +9,7 @@ end
 # Table name: comments
 #
 #  id         :integer          not null, primary key
-#  comment    :string
+#  comment    :text
 #  event_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

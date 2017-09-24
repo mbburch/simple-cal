@@ -1,61 +1,76 @@
-<div class="row">
-  <%= simple_form_for @event do |f| %>
-    <%= f.error_notification message: t(:'simple_form.error_notification.default_message', model: "Event") %>
+<%= simple_form_for @event do |f| %>
+  <%= f.error_notification message: t(:'simple_form.error_notification.default_message', model: "Event") %>
 
-    <div class="row">
-      <%= f.input :title, wrapper_html: { class: 'm6 s12' } %>
+  <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+
+  <%= f.input :title %>
+
+  <%= f.input :description %>
+
+  <div class="form-group row">
+    <div class="input-field col">
+      <%= f.label :start_time, 'From' %>
+      <%= f.datetime_local_field :start_time, class: 'form-control' %>
     </div>
-    <div class="row">
-      <%= f.input :description, wrapper_html: { class: 'm6 s12' } %>
+    <div class="input-field col">
+      <%= f.label :end_time, 'Until'  %>
+      <%= f.datetime_local_field :end_time, class: 'form-control' %>
     </div>
-    <div class="row">
-      <div class="input-field col m6 s12">
-        <%= f.label :start_time, 'From', style: 'position: relative; left: 0' %>
-        <%= f.datetime_local_field :start_time %>
-      </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="input-field col event_file">
+      <%= f.label :event_file, 'Upload File' %>
+      <%= f.file_field :event_file, class: 'form-control' %>
     </div>
-    <div class="row">
-      <div class="input-field col m6 s12">
-        <%= f.label :end_time, 'Until', style: 'position: relative; left: 0'  %>
-        <%= f.datetime_local_field :end_time %>
-      </div>
-    </div>
-    <div class="row">
-      <%= f.input :event_file, as: :file %>
-    </div>
-    <div class="row">
+    <div class="input-field col event_category">
       <%= f.association :category %>
     </div>
-    <div class="row">
-      <h6>Comments</h6>
+  </div>
+
+  <div class="form-group row">
+    <div class="input-field col">
+      <h5>Comments</h5>
       <div id="comments">
         <%= f.simple_fields_for :comments do |comment| %>
           <%= render "comment_fields", f: comment %>
         <% end %>
       </div>
-      <div class="links">
-        <%= link_to_add_association "Add Comment", f, :comments, {class: "btn waves-effect waves-light"} %>
+      <div class="links mt-3">
+        <%= link_to_add_association "Add Comment", f, :comments, {class: "btn btn-success btn-sm"} %>
       </div>
     </div>
-    <div class="row">
-      <h6>Tasks</h6>
+
+    <div class="input-field col">
+      <h5>Tasks</h5>
       <div id="tasks">
         <%= f.simple_fields_for :tasks do |task| %>
           <%= render "task_fields", f: task %>
         <% end %>
       </div>
-      <div class="links">
-        <%= link_to_add_association "Add Task", f, :tasks, {class: "btn waves-effect waves-light"} %>
+      <div class="links mt-3">
+        <%= link_to_add_association "Add Task", f, :tasks, {class: "btn btn-success btn-sm"} %>
       </div>
     </div>
-    <div class="row">
-      <%= f.input :active, wrapper: :materialize_boolean, wrapper_html: { class: 'm3 s6' } %>
-      <%= f.input :private, wrapper: :materialize_boolean, wrapper_html: { class: 'm3 s6' } %>
-    </div>
-    <div class="row">
-      <%= f.button :submit %>
-      <%= link_to "Cancel", dashboard_path, {class: "btn waves-effect waves-light grey darken-1"} %>
-    </div>
+  </div>
 
-  <% end %>
-</div>
+  <%= f.input :private, as: :radio_buttons, input_html: {class: "ml-2"} %>
+
+  <div class="form-group row">
+    <%= f.input :active, as: :radio_buttons, input_html: {class: "ml-2"} %>
+    <div class="input-field col-3" id="active-date-field">
+      <%= f.label :active_date, 'Set Active Date?'  %>
+      <%= f.date_field :active_date, html5: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, {class: "btn btn-info"}%>
+    <%= link_to "Cancel", dashboard_path, {class: "btn btn-secondary"} %>
+  </div>
+<% end %>
+

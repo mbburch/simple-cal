@@ -1,2 +1,6 @@
-<h2><%= "Edit #{@event.title.titleize}" %></h2>
-<%= render partial: 'form' %>
+<div class="card">
+  <h4 class="card-header"><%= "Edit #{@event.title.titleize}" %></h4>
+  <div class="card-body">
+    <%= render partial: 'form' %>
+  </div>
+</div>

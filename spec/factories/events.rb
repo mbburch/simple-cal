@@ -27,6 +27,7 @@ end
 #  event_file_file_size    :integer
 #  event_file_updated_at   :datetime
 #  category_id             :integer
+#  active_date             :date
 #
 # Indexes
 #

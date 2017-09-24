@@ -1,14 +1,44 @@
-<%= link_to "Edit", edit_event_path(@event) %>
-<%= link_to "Delete", event_path(@event), data: { confirm: 'Are you sure?' }, method: :delete  %>
+<div class="card">
+  <h4 class="card-header"><%= @event.title.titleize %><small class="text-muted float-right"><%= "#{@event.start_time.to_s(:day_month_time)} - #{@event.end_time.to_s(:day_month_time)}" %></small></h4>
+  <div class="card-body">
 
-<h1><%= @event.title.titleize %></h1>
+    <% if @event.description %>
+      <p><%= @event.description.capitalize %></p>
+    <% end %>
 
-<h4><%= "#{@event.start_time.to_s(:day_month_time)} - #{@event.end_time.to_s(:day_month_time)}" %></h4>
-<% if @event.description %>
-  <p><%= @event.description.capitalize %></p>
-<% end %>
+    <% if @event.event_file? %>
+      <p>Attachment: <%= link_to @event.event_file.original_filename, @event.event_file.url %></p>
+    <% end %>
 
-<%= link_to @event.event_file.original_filename, @event.event_file.url if @event.event_file? %>
+    <div class="row">
+        <% if @event.comments %>
+          <div class="col-12 col-md-6 comment-list">
+            <h5>Comments</h5>
+            <ul class="list-group">
+              <% @event.comments.each do |comment| %>
+                <li class="list-group-item"><%= comment.comment.capitalize %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
+      <% if @tasks %>
+        <div class="col-12 col-md-6 task-list">
+          <ul class="list-group">
+          <h5>Tasks</h5>
+            <% @tasks.each do |task| %>
+              <li class="list-group-item"><%= "#{task.priority.capitalize} Priority: #{task.description.capitalize}" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
 
-
+    <div class="row mt-3">
+      <div class="col-3">
+        <%= link_to "Edit", edit_event_path(@event), {class: "btn btn-info"} %>
+        <%= link_to "Delete", event_path(@event), data: { confirm: 'Are you sure?' }, class: "btn btn-danger", method: :delete  %>
+      </div>
+    </div>
+  </div>
+</div>

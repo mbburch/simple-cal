@@ -2,6 +2,8 @@ class Task < ApplicationRecord
   enum priority: [:low, :medium, :high]
 
   belongs_to :event
+
+  scope :sort_by_priority, -> { order(priority: :desc )}
 end
 
 # == Schema Information
@@ -9,7 +11,7 @@ end
 # Table name: tasks
 #
 #  id          :integer          not null, primary key
-#  description :string
+#  description :text
 #  priority    :integer          default("low")
 #  event_id    :integer
 #  created_at  :datetime         not null

@@ -10,6 +10,8 @@ class Event < ApplicationRecord
   has_many :tasks, inverse_of: :event, dependent: :destroy
   accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :all_blank
 
+  scope :active, -> { where(active: true) }
+
   validates :title, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
@@ -44,6 +46,7 @@ end
 #  event_file_file_size    :integer
 #  event_file_updated_at   :datetime
 #  category_id             :integer
+#  active_date             :date
 #
 # Indexes
 #

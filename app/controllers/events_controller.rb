@@ -1,15 +1,17 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
+  before_action :activate_events, only: [:index]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def show
     @event
+    @tasks = @event.tasks.sort_by_priority
   end
 
   def index
     @user = current_user
     @categories = current_user.categories
-    @events = current_user.events
+    @events = current_user.events.active
   end
 
   def new
@@ -49,6 +51,11 @@ class EventsController < ApplicationController
 
   private
 
+  def activate_events
+    current_user.events.where(active: false).where("active_date <= ?", Date.today ).update_all(active: true)
+    binding.pry
+  end
+
   def set_event
     @event = current_user.events.find(params[:id])
   end
@@ -62,6 +69,7 @@ class EventsController < ApplicationController
       :end_time,
       :event_file,
       :active,
+      :active_date,
       :private,
       :category_id,
       comments_attributes: [:id, :comment, :_destroy],

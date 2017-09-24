@@ -9,7 +9,7 @@ end
 # Table name: tasks
 #
 #  id          :integer          not null, primary key
-#  description :string
+#  description :text
 #  priority    :integer          default("low")
 #  event_id    :integer
 #  created_at  :datetime         not null

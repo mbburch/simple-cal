@@ -1,5 +1,9 @@
 <div class="nested-fields">
-  <%= f.input :description %>
-  <%= f.input :priority, collection: Task.priorities, label_method: :first, value_method: :first, as: :radio_buttons %>
-  <%= link_to_remove_association "Remove Task", f %>
+  <div class="input-field">
+    <%= f.input :description, input_html: { class: 'form-control' } %>
+  </div>
+  <div class="input-field col-3 pl-0">
+    <%= f.input :priority, collection: Task.priorities, input_html: { class: 'form-control' }, label_method: :first, value_method: :first %>
+  </div>
+  <%= link_to_remove_association "Remove Task", f, {class: "btn btn-secondary btn-sm"} %>
 </div>

@@ -1,20 +1,18 @@
 <div class="row">
-  <div class="hide-on-small-only col m2">
-    <h6>Categories</h6>
-    <ul class="collection">
-      <% @categories.each do |category| %>
-      <li class="collection-item blue-grey darken-2"><div><%= link_to category.name, category_path(category), style:"color:white" %><a href="#!" class="secondary-content"><i class="material-icons" style="color:<%="#{category.color}"%>">label</i></div></li>
-        <!-- <li class="collection-item" style="background-color:<%="#{category.color}"%>"><%= link_to category.name, category_path(category) %></li> -->
-      <% end %>
-    </ul>
+  <div class="col-12 col-md-2">
     <div class="row">
-      <%= link_to "New Category", new_category_path %>
+      <h6>Categories</h6>
+      <div class="list-group col-12">
+        <% @categories.each do |category| %>
+          <%= link_to category.name, edit_category_path(category), style:"background-color:#{category.color}; color:white", class:"list-group-item list-group-item-action small" %>
+        <% end %>
+        <%= link_to "New Category", new_category_path, class:"list-group-item list-group-item-action small" %>
+      </div>
     </div>
-    <div class="row">
-      <%= link_to "New Event", new_event_path %>
-    </div>
+
   </div>
-  <div class="col s12 m9">
+  <div class="col-12 col-md-10">
+    <%= link_to "New Event", new_event_path, class:"btn btn-success" %>
     <%= month_calendar events: @events do |date, events| %>
       <%= date.day %>
       <% events.each do |event| %>
