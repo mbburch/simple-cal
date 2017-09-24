@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :category do
-    
+    name { Faker::StarWars.planet }
+    color { Faker::Color.hex_color }
   end
 end
 
