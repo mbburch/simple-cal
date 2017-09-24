@@ -1,20 +1,12 @@
-<nav>
-  <div class="nav-wrapper blue-grey darken-2" id="nav">
-    <a href="/" class="brand-logo"><i class="material-icons cal-icon">date_range</i>SimpleCal</a>
-    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand"><i class="fa fa-calendar"></i> SimpleCal</a>
+  <span class="navbar-text">
+    <ul class="navbar-nav mr-auto">
       <% if current_user %>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, {class: "nav-link", method: :delete} %></li>
       <% else %>
-        <li><%= link_to "Log In", new_user_session_path %></li>
+        <li class="nav-item"><%= link_to "Log In", new_user_session_path, {class: "nav-link"} %></li>
       <% end %>
     </ul>
-    <ul class="side-nav" id="mobile-demo">
-      <% if current_user %>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Log In", new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
+  </span>
 </nav>
