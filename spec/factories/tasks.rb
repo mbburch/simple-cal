@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :task do
-    
+    event
+    description { Faker::Hipster.sentence }
+    priority { Task.priorities.values.sample }
   end
 end
 
