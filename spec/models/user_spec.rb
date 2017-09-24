@@ -11,5 +11,10 @@ RSpec.describe User, type: :model do
       user = build(:user, email: '')
       expect(user).not_to be_valid
     end
+
+    it 'is invalid with incorrect password_confirmation' do
+      user = build(:user, password_confirmation: 'passWord')
+      expect(user).not_to be_valid
+    end
   end
 end
