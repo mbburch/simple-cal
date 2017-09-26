@@ -1,0 +1,18 @@
+<div class="col-12 col-md-6 task-list">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Tasks</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.description.capitalize %></td>
+          <td><%= task.priority.capitalize %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

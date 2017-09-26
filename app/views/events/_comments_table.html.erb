@@ -1,0 +1,16 @@
+<div class="col-12 col-md-6 comment-list">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.comment.capitalize %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

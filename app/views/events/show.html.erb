@@ -16,43 +16,11 @@
 
     <div class="row">
         <% if @comments %>
-          <div class="col-12 col-md-6 comment-list">
-            <table class="table table-sm">
-              <thead>
-                <tr>
-                  <th>Comments</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @comments.each do |comment| %>
-                  <tr>
-                    <td><%= comment.comment.capitalize %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
+          <%= render partial: "comments_table", locals: { comment: @comment } %>
         <% end %>
 
       <% if @tasks %>
-        <div class="col-12 col-md-6 task-list">
-          <table class="table table-sm">
-            <thead>
-              <tr>
-                <th>Tasks</th>
-                <th>Priority</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @tasks.each do |task| %>
-                <tr>
-                  <td><%= task.description.capitalize %></td>
-                  <td><%= task.priority.capitalize %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+        <%= render partial: "tasks_table", locals: { task: @task } %>
       <% end %>
     </div>
 
