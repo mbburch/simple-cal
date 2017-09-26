@@ -7,7 +7,7 @@
   <div class="card-body">
 
     <% if @event.description %>
-      <p><%= @event.description.capitalize %></p>
+      <p><strong>Description: </strong><%= @event.description.capitalize %></p>
     <% end %>
 
     <% if @event.event_file? %>
@@ -15,25 +15,43 @@
     <% end %>
 
     <div class="row">
-        <% if @event.comments %>
+        <% if @comments %>
           <div class="col-12 col-md-6 comment-list">
-            <h5>Comments</h5>
-            <ul class="list-group">
-              <% @event.comments.each do |comment| %>
-                <li class="list-group-item"><%= comment.comment.capitalize %></li>
-              <% end %>
-            </ul>
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @comments.each do |comment| %>
+                  <tr>
+                    <td><%= comment.comment.capitalize %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
         <% end %>
 
       <% if @tasks %>
         <div class="col-12 col-md-6 task-list">
-          <ul class="list-group">
-          <h5>Tasks</h5>
-            <% @tasks.each do |task| %>
-              <li class="list-group-item"><%= "#{task.priority.capitalize} Priority: #{task.description.capitalize}" %></li>
-            <% end %>
-          </ul>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Tasks</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tasks.each do |task| %>
+                <tr>
+                  <td><%= task.description.capitalize %></td>
+                  <td><%= task.priority.capitalize %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       <% end %>
     </div>

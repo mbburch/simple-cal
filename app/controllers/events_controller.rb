@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   def show
     @event
     @tasks = @event.tasks.sort_by_priority
+    @comments = @event.comments.sort_by_date
   end
 
   def index
