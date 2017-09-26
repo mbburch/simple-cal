@@ -12,7 +12,7 @@ RSpec.describe "User can attach file to event", type: :feature, selenium: true, 
     end
     click_button "Log in"
     visit edit_event_path(event)
-    page.attach_file('event[event_file]', Rails.root + 'spec/support/canyon.jpg')
+    page.attach_file("event[event_file]", Rails.root + "spec/support/canyon.jpg")
     click_button "Update Event"
     click_on event.title
 

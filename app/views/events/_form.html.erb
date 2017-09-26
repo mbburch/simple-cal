@@ -13,19 +13,19 @@
 
   <div class="form-group row">
     <div class="input-field col">
-      <%= f.label :start_time, 'From' %>
-      <%= f.datetime_local_field :start_time, class: 'form-control' %>
+      <%= f.label :start_time, "From" %>
+      <%= f.datetime_local_field :start_time, class: "form-control" %>
     </div>
     <div class="input-field col">
-      <%= f.label :end_time, 'Until'  %>
-      <%= f.datetime_local_field :end_time, class: 'form-control' %>
+      <%= f.label :end_time, "Until"  %>
+      <%= f.datetime_local_field :end_time, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
     <div class="input-field col event_file">
-      <%= f.label :event_file, 'Upload File' %>
-      <%= f.file_field :event_file, class: 'form-control' %>
+      <%= f.label :event_file, "Upload File" %>
+      <%= f.file_field :event_file, class: "form-control" %>
     </div>
     <div class="input-field col event_category">
       <%= f.association :category %>
@@ -41,7 +41,7 @@
         <% end %>
       </div>
       <div class="links mt-3">
-        <%= link_to_add_association "Add Comment", f, :comments, {class: "btn btn-success btn-sm"} %>
+        <%= link_to_add_association "Add Comment", f, :comments, { class: "btn btn-success btn-sm" } %>
       </div>
     </div>
 
@@ -53,24 +53,24 @@
         <% end %>
       </div>
       <div class="links mt-3">
-        <%= link_to_add_association "Add Task", f, :tasks, {class: "btn btn-success btn-sm"} %>
+        <%= link_to_add_association "Add Task", f, :tasks, { class: "btn btn-success btn-sm" } %>
       </div>
     </div>
   </div>
 
-  <%= f.input :private, as: :radio_buttons, input_html: {class: "ml-2"} %>
+  <%= f.input :private, as: :radio_buttons, input_html: { class: "ml-2" } %>
 
   <div class="form-group row">
-    <%= f.input :active, as: :radio_buttons, input_html: {class: "ml-2"} %>
+    <%= f.input :active, as: :radio_buttons, input_html: { class: "ml-2" } %>
     <div class="input-field col-3" id="active-date-field">
-      <%= f.label :active_date, 'Set Active Date?'  %>
-      <%= f.date_field :active_date, html5: true, class: 'form-control' %>
+      <%= f.label :active_date, "Set Active Date?"  %>
+      <%= f.date_field :active_date, html5: true, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, {class: "btn btn-info"}%>
-    <%= link_to "Cancel", dashboard_path, {class: "btn btn-secondary"} %>
+    <%= f.button :submit, { class: "btn btn-info" }%>
+    <%= link_to "Cancel", dashboard_path, { class: "btn btn-secondary" } %>
   </div>
 <% end %>
 
