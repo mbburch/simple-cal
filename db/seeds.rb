@@ -1,29 +1,57 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 pwd = "password"
-user1 = User.create!(email: "thefirst@example.com", first_name: "Jane", last_name: "Jenkins", password: pwd, password_confirmation: pwd)
-user2 = User.create!(email: "thesecond@example.com", first_name: "Bob", last_name: "Wendoo", password: pwd, password_confirmation: pwd)
+
+# Users
+user1 = User.create(email: "jjenkins@example.com", first_name: "Jane", last_name: "Jenkins", password: pwd, password_confirmation: pwd)
+user2 = User.create(email: "bobbyg@example.com", first_name: "Bob", last_name: "Wendoo", password: pwd, password_confirmation: pwd)
+# Categories
+exercise = user1.categories.create(name: "Exercise", color: Faker::Color.hex_color)
+family = user1.categories.create(name: "Family", color: Faker::Color.hex_color)
+work = user2.categories.create(name: "Work", color: Faker::Color.hex_color)
+personal = user2.categories.create(name: "Personal", color: Faker::Color.hex_color)
+# Events
 event1 = user1.events.create(title: Faker::Hipster.word,
                              description: Faker::Hipster.sentence,
-                             start_time: DateTime.now,
-                             end_time: DateTime.now + rand(2).days + rand(24).hours + (rand(2) * 30).minute
-                            )
+                             start_time: Time.zone.now,
+                             end_time: Time.zone.now + rand(2).days + rand(24).hours + (rand(2) * 30).minute,
+                             category_id: exercise.id)
+event2 = user1.events.create(title: Faker::Hipster.word,
+                             description: Faker::Hipster.sentence,
+                             start_time: Time.zone.now,
+                             end_time: Time.zone.now + rand(2).days + rand(24).hours + (rand(2) * 30).minute,
+                             category_id: family.id)
+event3 = user1.events.create(title: Faker::Hipster.word,
+                             description: Faker::Hipster.sentence,
+                             start_time: Time.zone.now,
+                             end_time: Time.zone.now + rand(2).days + rand(24).hours + (rand(2) * 30).minute,
+                             category_id: exercise.id)
+event4 = user2.events.create(title: Faker::Hipster.word,
+                           description: Faker::Hipster.sentence,
+                           start_time: Time.zone.now,
+                           end_time: Time.zone.now + rand(2).days + rand(24).hours + (rand(2) * 30).minute,
+                           category_id: work.id)
+event5 = user2.events.create(title: Faker::Hipster.word,
+                           description: Faker::Hipster.sentence,
+                           start_time: Time.zone.now,
+                           end_time: Time.zone.now + rand(2).days + rand(24).hours + (rand(2) * 30).minute,
+                           category_id: personal.id)
+# Comments
+comment1 = event1.comments.create(comment: Faker::Hipster.sentence)
+comment2 = event2.comments.create(comment: Faker::Hipster.sentence)
+comment3 = event3.comments.create(comment: Faker::Hipster.sentence)
+comment4 = event4.comments.create(comment: Faker::Hipster.sentence)
+comment5 = event5.comments.create(comment: Faker::Hipster.sentence)
+comment6 = event1.comments.create(comment: Faker::Hipster.sentence)
+comment7 = event2.comments.create(comment: Faker::Hipster.sentence)
+comment8 = event3.comments.create(comment: Faker::Hipster.sentence)
+# Tasks
+task1 = event1.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task2 = event1.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task3 = event2.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task4 = event2.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task5 = event3.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task6 = event3.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task7 = event4.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task8 = event4.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task9 = event5.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
+task10 = event5.tasks.create(description: Faker::Hipster.sentence, priority: Task.priorities.values.sample)
 
-#  id          :integer          not null, primary key
-#  title       :string
-#  description :text
-#  start_date  :datetime
-#  end_date    :datetime
-#  start_time  :time
-#  end_time    :time
-#  active      :boolean          default(TRUE)
-#  private     :boolean          default(TRUE)
-#  user_id     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
