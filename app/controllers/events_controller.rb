@@ -52,6 +52,7 @@ class EventsController < ApplicationController
 
   private
 
+  # my assumption around dates "turning on" was that they would become visible on a selected date.
   def activate_events
     current_user.events.where(active: false).where("active_date <= ?", Date.today ).update_all(active: true)
   end

@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# I decided to stick with controller specs as listed in the requirements. I generally default to request specs, especially in Rails 5
+
 RSpec.describe EventsController, type: :controller do
   let(:user) { create(:user) }
   let(:event) { create(:event, user_id: user.id) }
